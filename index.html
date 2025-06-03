@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rapikom Vende a plazos</title>
+  <!-- Enlazamos el CSS externo -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <!-- ================================
+       HEADER + NAV PRINCIPAL 
+       ================================= -->
+  <header class="site-header">
+    <div class="nav-wrapper">
+      <!-- 
+        ① BOTÓN HAMBURGUESA (solo en móvil).
+        Reemplaza "hamburger.svg" por la ruta real de tu icono de hamburguesa.
+      -->
+      <button class="nav-toggle" aria-label="Abrir menú">
+        <img src="assets/img/hamburger.svg" alt="Menú" />
+      </button>
+
+      <!-- 
+        ② LOGO.
+        Reemplaza "logo.png" por la ruta real de tu logo.
+      -->
+      <a href="#" class="logo">
+        <img src="assets/img/logo.png" alt="Logo de la marca" />
+      </a>
+
+      <!-- 
+        ③ NAVEGACIÓN PRINCIPAL (solo visible en desktop).
+      -->
+      <nav class="primary-nav">
+        <ul class="menu-list">
+          <li><a href="#">Dónde comprar</a></li>
+          <li><a href="#">Descarga la app</a></li>
+          <li><a href="#">Cómo funciona</a></li>
+
+          <!-- Ítem con dropdown: Para comercios -->
+          <li class="has-dropdown">
+            <a href="#">
+              Para comercios <span class="arrow"></span>
+            </a>
+            
+          </li>
+
+          <!-- Ítem con dropdown: Nosotros -->
+          <li class="has-dropdown">
+            <a href="#">
+              Nosotros <span class="arrow"></span>
+            </a>
+            
+          </li>
+
+        </ul>
+      </nav>
+
+      <!-- 
+        ④ BOTONES DE ACCIÓN (solo visible en desktop). 
+      -->
+      <div class="nav-actions">
+        <a href="#" class="btn btn-outline">Pagar mis cuotas</a>
+        <a href="#" class="btn btn-primary">Ir a Comprar</a>
+      </div>
+
+      <!-- 
+        ⑤ ICONO DE USUARIO (solo visible en móvil). 
+        Reemplaza "user-icon.png" por la ruta real de tu ícono de usuario.
+      -->
+      <a href="#" class="user-icon">
+        <img src="assets/img/user-icon.png" alt="Usuario" />
+      </a>
+    </div>
+  </header>
+
+  <!-- ================================
+       BODY: SECCIONES PRINCIPALES
+       ================================= -->
+
+  <!--
+    1ª SECCIÓN: Texto a la izquierda, grid de 4 bloques a la derecha
+    Basada en la última imagen que compartiste (crece tu negocio con Addi).
+  -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>¡Multiplica tus ventas con Rapikom Cash!</h1>
+        <p>
+          Ofrece a tus clientes la posibilidad de <strong>pagar en cuotas</strong>, </p> <p>y observa cómo tu ticket promedio se multiplica.</p>
+        </p>
+        <a href="#" class="btn btn-primary">Registra tu negocio</a>
+        <ul class="hero-features">
+          <li>✔ Planes de pago flexibles, tú eliges.</li>
+          <li>✔ Vende de forma segura.</li>
+          <li>✔ Accede a más de 2 millones de clientes potenciales.</li>
+          <li>✔ Sin papeleo ni trámites largos.</li>
+          <li>✔ Proceso 100% digital.</li>
+          <li>✔ Aumenta la retención de clientes.</li>
+        </ul>
+      </div>
+      <div class="hero-cards">
+        <!-- Bloque 1: Imagen / Color + texto -->
+        <div class="card card-orange">
+          <!-- 
+            Puedes reemplazar el fondo naranja sólido con una imagen:
+            <img src="assets/img/card1.jpg" alt="Incremento ventas" />
+          -->
+          <span class="card-number">100%</span>
+          <p class="card-text">Incremento</p>
+          <p class="card-text"><strong>Ventas</strong></p>
+        </div>
+        <!-- Bloque 2: Imagen placeholder -->
+        <div class="card card-img">
+          <!-- Reemplaza "placeholder1.jpg" con tu foto real -->
+          <img src="assets/img/placeholder1.jpg" alt="Foto comerciante" />
+        </div>
+        <!-- Bloque 3: Imagen placeholder -->
+        <div class="card card-img">
+          <!-- Reemplaza "placeholder2.jpg" con tu foto real -->
+          <img src="assets/img/placeholder2.jpg" alt="Foto clienta feliz" />
+        </div>
+        <!-- Bloque 4: Color + texto -->
+        <div class="card card-green">
+          <span class="card-number">3x</span>
+          <p class="card-text">En tu valor promedio</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--
+    2ª SECCIÓN: Repite la misma estructura que la anterior (dos columnas).
+    Ajusta texto y placeholders según lo necesites. Aquí uso contenido idéntico
+    para ejemplificar, pero tú puedes cambiar títulos, párrafos e imágenes.
+  -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>Multiplica tus ventas con Rapikom Cash</h1>
+        <p>
+          Ofrece a tus clientes la posibilidad de pagar en cuotas y observa cómo tu ticket promedio se multiplica
+        </p>
+        <a href="#" class="btn btn-primary">Comienza hoy</a>
+        <ul class="hero-features">
+          <li>✔ Sin papeleo ni trámites largos.</li>
+          <li>✔ Proceso 100% digital.</li>
+          <li>✔ Aumenta la retención de clientes.</li>
+        </ul>
+      </div>
+      <div class="hero-cards">
+        <!-- Bloque 1: Color + texto -->
+        <div class="card card-orange">
+          <span class="card-number">50%</span>
+          <p class="card-text">Más ticket promedio</p>
+        </div>
+        <!-- Bloque 2: Imagen placeholder -->
+        <div class="card card-img">
+          <!-- Reemplaza "placeholder3.jpg" con tu foto real -->
+          <img src="assets/img/placeholder3.jpg" alt="Foto comercio" />
+        </div>
+        <!-- Bloque 3: Imagen placeholder -->
+        <div class="card card-img">
+          <!-- Reemplaza "placeholder4.jpg" con tu foto real -->
+          <img src="assets/img/placeholder4.jpg" alt="Foto producto" />
+        </div>
+        <!-- Bloque 4: Color + texto -->
+        <div class="card card-green">
+          <span class="card-number">4x</span>
+          <p class="card-text">En clientes recurrentes</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================
+       (Aquí podrías seguir con más secciones o el footer)
+       ================================= -->
+</body>
+</html>
