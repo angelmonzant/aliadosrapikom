@@ -8,7 +8,7 @@
 }
 
 html {
-  font-family: Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   line-height: 1;
 }
@@ -35,7 +35,7 @@ body {
    ===================================================== */
 .btn {
   display: inline-block;
-  font-size: 0.9375rem; /* 15px */
+  font-size: 1.5rem; /* 15px */
   font-weight: 600;
   text-decoration: none;
   border-radius: 4px;
@@ -56,7 +56,7 @@ body {
 
 .btn-outline {
   background-color: transparent;
-  color: var(--color-outline);
+  color: #fa4515;
   border: 2px solid var(--color-outline);
 }
 
@@ -235,14 +235,14 @@ body {
    SECCIONES ESTILO “HERO” CON GRID DE BLOCOS
    ===================================================== */
 .hero-section {
-  padding: 4rem 1rem;
+  padding: 3rem 1rem;
 }
 
 .hero-content {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 2fr 1fr; /* Dos columnas: texto + grid de tarjetas */
+  grid-template-columns: 60% 40%; /* Dos columnas: texto + grid de tarjetas */
   gap: 1rem;
   align-items: center;
 }
@@ -415,6 +415,726 @@ body {
   object-fit: cover;
 }
 
+
+/* =====================================================
+   SECCIÓN “FEATURE” 
+   (dos fotos a los costados + texto en el medio)
+   Con degradado de fondo, texto negro y responsive especial
+   ===================================================== */
+.feature-section {
+  /* Degradado suave de derecha a izquierda:
+     empieza en #B2FCE4 (derecha) y termina en #66D2B8 (izquierda) */
+  background: linear-gradient(
+    to left,
+    #00E9F7,
+    #66D2B8
+  );
+  border-radius: 16px;          /* Esquinas redondeadas */
+  padding: 2rem 1rem;           /* Espacio interno */
+  margin: 0.75rem auto;            /* Separación exterior y centrado */
+  max-width: 1200px;            /* Ancho máximo en desktop */
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;                  /* Espacio horizontal entre columnas */
+}
+
+/* Contenedor de cada imagen */
+.feature-img-container {
+  flex: 1 1 30%;                /* Cada imagen ocupa ~30% en desktop */
+  display: flex;
+  justify-content: center;
+}
+
+/* Imagen con border-radius y sombra */
+.feature-img {
+  width: 100%;
+  max-width: 300px;             /* Ajusta este valor si quieres fotos más grandes/pequeñas */
+  border-radius: 16px;          /* Mismo radio que el contenedor general */
+  object-fit: cover;            /* Para que la imagen no se deforme */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Contenedor de texto central */
+.feature-text {
+  flex: 1 1 40%;                /* Ocupa ~40% del ancho en desktop */
+  color: #000000;               /* Texto en negro para contraste */
+  text-align: center;           /* Centrar horizontalmente */
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;                    /* Espacio vertical entre párrafos */
+}
+
+.feature-text h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.feature-text p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* =====================================================
+   MEDIA QUERIES / RESPONSIVE PARA .feature-section
+   ===================================================== */
+@media (max-width: 767px) {
+  .feature-section {
+    flex-direction: column;      /* Apilar los elementos (imagen, texto, imagen) */
+    padding: 1.5rem 1rem;        /* Reducir padding en móvil */
+  }
+
+  /* Ocultar la primera imagen en móvil */
+  .feature-img-container:first-child {
+    display: none;
+  }
+
+  /* La segunda imagen ocupa todo el ancho disponible */
+  .feature-img-container:last-child {
+    flex: 1 1 100%;
+    margin-top: 1rem;           /* Pequeño margen superior para separar del texto */
+  }
+
+  .feature-img {
+    max-width: 100%;             /* Ocupa todo el ancho del contenedor */
+  }
+
+  /* Ajustar el texto central para que ocupe todo el ancho */
+  .feature-text {
+    flex: 1 1 100%;
+    margin-top: 1rem;            /* Separación arriba */
+  }
+}
+
+/* =====================================================
+   SECCIÓN TESTIMONIAL + BENEFICIOS
+   (Video 9:16 a la izquierda + info a la derecha)
+   ===================================================== */
+.testimonial-section {
+  display: grid;
+  grid-template-columns: 0.3fr 0.6fr; /* Dos columnas iguales en desktop */
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  gap: 5rem;
+  max-width: 1200px;              /* Centrar y limitar ancho */
+  margin: 2rem auto;
+  padding: 2rem 1rem;
+}
+
+/* -----------------------------------------------------
+   ① VIDEO CON PROPORCIÓN 9:16
+   ----------------------------------------------------- */
+.video-container {
+  position: relative;
+  width:  100%;
+  max-width: 400px;
+  /* Para 9:16 (anchura 100% -> altura 100 * (16/9)%) */
+  padding-top: 177.78%; /* (16/9)*100 = 177.78% */
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.testimonial-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cubre todo el contenedor sin deformarse */
+  border-radius: 16px;
+}
+
+/* -----------------------------------------------------
+   ② TEXTO DE BENEFICIOS (derecha)
+   ----------------------------------------------------- */
+.testimonial-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.testimonial-text h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary); /* Asumimos que tu variable de color principal es azul */
+  line-height: 1.2;
+}
+
+/* Lista de beneficios */
+.benefits-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.benefits-list li {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+/* Ícono de cada beneficio */
+.benefit-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+/* Texto de cada beneficio */
+.benefit-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.benefit-title {
+  font-size: 1.125rem; /* 18px */
+  font-weight: 600;
+  color: #000000;
+}
+
+.benefit-desc {
+  font-size: 0.9375rem; /* 15px */
+  color: #333333;
+  line-height: 1.4;
+}
+
+/* Botón de llamada a la acción */
+.testimonial-btn {
+  align-self: start;           /* En desktop, alinea a la izquierda dentro de .testimonial-text */
+  margin-top: 1rem;
+}
+
+/* =====================================================
+   MEDIA QUERIES / RESPONSIVE PARA .testimonial-section
+   ===================================================== */
+@media (max-width: 767px) {
+  .testimonial-section {
+    display: flex;
+    flex-direction: column;    /* Apila video y texto verticalmente */
+    gap: 2rem;
+    padding: 1.5rem 1rem;
+  }
+
+  /* En móvil, ocupar todo el ancho del contenedor */
+  .video-container {
+    width: 100%;
+    padding-top: 177.78%;      /* Mantener 9:16 */
+  }
+
+  /* Listado de beneficios ocupa 100% del ancho */
+  .testimonial-text {
+    width: 100%;
+  }
+
+  /* Botón centrado en móvil */
+  .testimonial-btn {
+    align-self: center;        /* Centrar el botón horizontalmente */
+    width: 100%;
+    max-width: 320px;          /* Limitar ancho del botón en móvil */
+    text-align: center;
+  }
+}
+
+
+/* =====================================================
+   SECCIÓN DE REGISTRO (Formulario moderno — Web + Responsive)
+   ===================================================== */
+
+/* -----------------------------------------------------
+   1) CONTENEDOR PRINCIPAL DE LA SECCIÓN
+   ----------------------------------------------------- */
+.registro-section {
+  /* Ajusta aquí el padding vertical para darle espacio arriba y abajo */
+  padding: 4rem 1rem; /* <- Si quieres más espacio arriba/abajo, aumenta estos valores */
+  background-color: #f9fafb; /* Un gris muy claro de fondo */
+}
+
+/* Para espaciar esta sección de la anterior, puedes
+   aumentar el margin-top en .registro-section o
+   disminuir el margin-bottom de la sección anterior. */
+.registro-section {
+  margin-top: 2rem; /* <- Ajusta este valor para separar secciones */
+}
+
+/* -----------------------------------------------------
+   2) CONTENEDOR INTERNO: DOS COLUMNAS EN DESKTOP
+   ----------------------------------------------------- */
+.registro-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+  gap: 2rem;                      /* Espacio horizontal entre columnas */
+  align-items: start;
+}
+
+/* -----------------------------------------------------
+   3) LADO IZQUIERDO: INFO y DECORACIÓN
+   ----------------------------------------------------- */
+.registro-info {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Logo opcional (arriba) */
+.registro-logo img {
+  width: 150px; /* Ajusta el ancho de tu logo */
+  height: auto;
+}
+
+/* Título principal */
+.registro-title {
+  font-size: 2rem;     /* 32px */
+  font-weight: 700;
+  color: #1e1e3f;      /* Azul oscuro / casi negro */
+  margin-top: 1rem;
+}
+
+/* Párrafo descriptivo */
+.registro-text {
+  font-size: 1rem;     /* 16px */
+  line-height: 1.6;
+  color: #4a4a4a;      /* Gris oscuro */
+}
+
+/* Decoración (imagen, SVG u otro) */
+/* Puedes posicionarla absolutamente o en flujo normal */
+.registro-decor {
+  margin-top: 2rem;
+}
+
+.registro-decor img {
+  width: 100%;
+  max-width: 400px;    /* Ajusta según la imagen decorativa */
+  opacity: 0.1;        /* Si quieres un efecto más sutil */
+}
+
+/* -----------------------------------------------------
+   4) LADO DERECHO: CONTENEDOR DEL FORMULARIO
+   ----------------------------------------------------- */
+.registro-form-container {
+  background-color: #ffffff; /* Blanco puro para destacar */
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  padding: 2rem 1.5rem;
+}
+
+/* -----------------------------------------------------
+   5) FORMULARIO: ESTRUCTURA Y ESTILOS GENERALES
+   ----------------------------------------------------- */
+.registro-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* Espacio entre cada grupo de inputs */
+}
+
+.form-title {
+  font-size: 1.5rem;   /* 24px */
+  font-weight: 700;
+  color: #1e1e3f;
+  margin-bottom: 1rem;
+}
+
+/* Cada grupo de campo */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;        /* Espacio entre label y input */
+}
+
+/* Labels */
+.form-group label {
+  font-size: 0.9375rem; /* 15px */
+  font-weight: 500;
+  color: #1e1e3f;
+}
+
+/* Inputs de texto y email y tel */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="file"] {
+  font-size: 1rem;      /* 16px */
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db; /* Gris suave */
+  border-radius: 8px;
+  background-color: #f9fafb;
+  transition: border-color 0.2s ease;
+}
+
+/* Al hacer focus, cambiar borde */
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="tel"]:focus,
+.form-group input[type="file"]:focus {
+  outline: none;
+  border-color: #256eff; /* Azul de Addi */
+  background-color: #ffffff;
+}
+
+/* -----------------------------------------------------
+   6) BOTÓN DE ENVÍO
+   ----------------------------------------------------- */
+.form-submit-btn {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;      /* 16px */
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #000000; /* Negro puro */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.form-submit-btn:hover {
+  background-color: #333333; /* Tonalidad más oscura al hacer hover */
+}
+
+/* -----------------------------------------------------
+   7) PIE DE FORMULARIO / DISCLAIMER
+   ----------------------------------------------------- */
+.form-disclaimer {
+  font-size: 0.875rem;   /* 14px */
+  color: #6b7280;        /* Gris medio */
+  margin-top: 0.5rem;
+}
+
+.form-disclaimer a.niva-link {
+  color: #256eff;        /* Azul de Addi */
+  text-decoration: none;
+}
+
+.form-disclaimer a.niva-link:hover {
+  text-decoration: underline;
+}
+
+/* =====================================================
+   MEDIA QUERIES / RESPONSIVE PARA .registro-section
+   ===================================================== */
+@media (max-width: 767px) {
+  /* ======================
+     CONTENEDOR DE DOS COLUMNAS -> COLUMNA ÚNICA
+     ====================== */
+  .registro-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;           /* Espacio vertical entre info y formulario */
+  }
+
+  .registro-info,
+  .registro-form-container {
+    width: 100%;
+  }
+
+  /* Centrar el texto en info */
+  .registro-info {
+    text-align: center;
+  }
+
+  /* Ajustes de título en móvil */
+  .registro-title {
+    font-size: 1.75rem;  /* 28px */
+  }
+
+  /* Reducir dimensión de la decoración */
+  .registro-decor img {
+    max-width: 80%;      /* Que ocupe el 80% del ancho en móvil */
+    margin: 0 auto;
+  }
+
+  /* Ajustar padding del contenedor del formulario */
+  .registro-form-container {
+    padding: 1.5rem 1rem;
+  }
+
+  /* Ajustar tamaños en el formulario */
+  .form-title {
+    font-size: 1.25rem;  /* 20px */
+  }
+
+  .form-group input[type="text"],
+  .form-group input[type="email"],
+  .form-group input[type="tel"],
+  .form-group input[type="file"] {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9375rem; /* 15px */
+  }
+
+  .form-submit-btn {
+    width: 100%;         /* Botón ocupa todo el ancho disponible */
+    padding: 0.75rem 0;
+  }
+}
+
+
+
+/* =====================================================
+   SECCIÓN “ALIADOS / CONFÍA EN APLAZO”
+   (Texto a la izquierda + logos a la derecha)
+   ===================================================== */
+.aliados-section {
+  background-color: #e4f5f8;        /* Fondo celeste claro que coincide con los banners previos */
+  padding: 2rem 1rem;               /* Espacio interno */
+}
+
+.aliados-content {
+  max-width: 1200px;                /* Limita el ancho y centra */
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 2rem;                        /* Espacio entre columna de texto y columnas de logos */
+}
+
+/* -----------------------------------------------------
+   ① TEXTO A LA IZQUIERDA
+   ----------------------------------------------------- */
+.aliados-text {
+  flex: 1 1 50%;                    /* Ocupa aprox. el 50% en desktop */
+}
+
+.aliados-subtitle {
+  font-size: 1rem;                  /* 16px */
+  font-weight: 600;
+  color: #1e1e3f;                   /* Color oscuro para contraste */
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.aliados-title {
+  font-size: 2rem;                  /* 32px */
+  font-weight: 700;
+  line-height: 1.2;
+  color: #1e1e3f;                   /* Texto en un tono muy oscuro */
+}
+
+/* Usamos <br> en el HTML para ajustar saltos. Si prefieres, 
+   podrías removerlos y dejar que el texto fluya, 
+   pero aquí se respeta el diseño con saltos manuales. */
+
+/* -----------------------------------------------------
+   ② IMAGEN DE LOGOS A LA DERECHA
+   ----------------------------------------------------- */
+.aliados-logos {
+  flex: 1 1 50%;                    /* Ocupa aprox. el 50% en desktop */
+  display: flex;
+  justify-content: center;          /* Centrar la imagen en su contenedor */
+  align-items: center;
+}
+
+.aliados-img {
+  width: 100%;
+  max-width: 600px;                 /* Ajusta según cómo quieras que se vea en desktop */
+  border-radius: 12px;              /* Esquinas redondeadas para suavizar */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  object-fit: contain;              /* Asegura que el aspecto se mantenga */
+}
+
+/* =====================================================
+   MEDIA QUERIES / RESPONSIVE PARA .aliados-section
+   ===================================================== */
+@media (max-width: 767px) {
+  .aliados-content {
+    display: flex;
+    flex-direction: column;         /* Apila texto y luego la imagen */
+    align-items: center;
+    gap: 1.5rem;                    /* Espacio vertical entre elementos */
+  }
+
+  .aliados-text {
+    flex: 1 1 100%;
+    text-align: center;             /* Centrar texto en móvil */
+  }
+
+  .aliados-subtitle {
+    font-size: 0.875rem;            /* 14px */
+  }
+
+  .aliados-title {
+    font-size: 1.75rem;             /* 28px */
+  }
+
+  .aliados-logos {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+
+  .aliados-img {
+    max-width: 100%;                /* Que ocupe todo el ancho disponible */
+    border-radius: 8px;             /* Reducir un poco el radio en móvil */
+  }
+}
+
+/* =====================================================
+   SECCIÓN “¿Cómo funciona Addi?”
+   (tres pasos — desktop y responsive)
+   ===================================================== */
+
+/* Contenedor principal de la sección */
+.how-section {
+  background-color: #00E9F7; /* Fondo azul intenso */
+  padding: 3rem 1rem;        /* Espacio interno */
+}
+
+/* Centrar y limitar ancho del contenido */
+.how-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Título de la sección */
+.how-title {
+  font-size: 2rem;           /* 32px */
+  font-weight: 700;
+  color: #000000;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Enfatizar palabra “Addi?” en color aquamarine */
+.how-title-emphasis {
+  color: #000000;            /* Verde-agua / aquamarine */
+}
+
+/* Contenedor de tarjetas: en desktop, 3 en fila */
+.how-cards {
+  display: flex;
+  gap: 2rem;                 /* Espacio horizontal entre cada tarjeta */
+  justify-content: center;   /* Centrar el grupo de tarjetas */
+  flex-wrap: wrap;           /* Permitir que bajen si el espacio se reduce */
+}
+
+/* -----------------------------------------------------
+   CADA TARJETA
+   ----------------------------------------------------- */
+.how-card {
+  background-color: #212121; /* Fondo navy oscuro */
+  border-radius: 16px;       /* Esquinas redondeadas */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 350px;          /* Ancho máximo de cada tarjeta en desktop */
+  box-shadow: 0 4px 12px rgba(61, 38, 38, 0.2);
+}
+
+/* -----------------------------------------------------
+   ENCABEZADO DE LA TARJETA (número + texto)
+   ----------------------------------------------------- */
+.how-card-header {
+  background-color: #212121;   /* Mismo fondo navy para continuidad */
+  padding: 1rem 1rem 0.5rem;    /* Espacio arriba */
+  position: relative;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+/* Círculo con número grande */
+.how-card-number {
+  font-size: 1.5rem;           /* 24px */
+  font-weight: 700;
+  color: #ffffff;
+  width: 2.25rem;              /* 36px ancho para contener el círculo */
+  height: 2.25rem;             /* 36px alto */
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Texto breve al lado del número */
+.how-card-header-text {
+  font-size: 1rem;             /* 16px */
+  color: #ffffff;              /* Verde-agua / aquamarine */
+  flex: 1;                     /* Que ocupe el resto del espacio */
+  line-height: 1.4;
+  margin-top: 0.25rem;         /* Ligera separación vertical */
+}
+
+/* -----------------------------------------------------
+   IMAGEN CENTRAL DE LA TARJETA
+   ----------------------------------------------------- */
+.how-card-image {
+  width: 100%;
+  overflow: hidden;
+}
+
+.how-card-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* -----------------------------------------------------
+   PIE DE TARJETA CON DESCRIPCIÓN
+   ----------------------------------------------------- */
+.how-card-footer {
+  background-color: #212121;   /* Mismo navy para consistencia */
+  color: #ffffff;
+  font-size: 0.9375rem;        /* 15px */
+  line-height: 1.5;
+  padding: 1rem 1rem;          /* Espacio interior */
+  flex-grow: 1;                /* Ocupa todo el espacio restante si hiciera falta */
+}
+
+/* =====================================================
+   MEDIA QUERIES / VERSION RESPONSIVE (MÓVIL)
+   ===================================================== */
+@media (max-width: 767px) {
+  .how-title {
+    font-size: 1.75rem;        /* 28px en móvil */
+  }
+
+  .how-cards {
+    flex-direction: column;    /* Apilar tarjetas una encima de la otra */
+    align-items: center;
+    gap: 1.5rem;               /* Menos espacio vertical que en desktop */
+  }
+
+  .how-card {
+    max-width: 100%;           /* Que ocupe todo el ancho posible */
+  }
+
+  .how-card-header {
+    flex-direction: row;       /* Misma disposición, pero adaptado a menor ancho */
+    padding: 1rem 0.75rem 0.5rem;
+  }
+
+  .how-card-number {
+    width: 2rem;               /* 32px */
+    height: 2rem;
+    font-size: 1.25rem;        /* 20px */
+  }
+
+  .how-card-header-text {
+    font-size: 0.9375rem;      /* 15px */
+  }
+
+  .how-card-footer {
+    font-size: 0.875rem;       /* 14px */
+    padding: 0.75rem 0.75rem;
+  }
+}
+
+
+
 /* =====================================================
    MEDIA QUERIES / RESPONSIVE
    ===================================================== */
@@ -535,4 +1255,6 @@ justify-content: center;
 
 .hero-text p {
   font-size: 1.3rem;
-  color: var(--color-text);
+  color: var(--color-text)
+
+}
