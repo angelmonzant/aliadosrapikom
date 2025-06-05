@@ -431,7 +431,7 @@ body {
   );
   border-radius: 16px;          /* Esquinas redondeadas */
   padding: 2rem 1rem;           /* Espacio interno */
-  margin: 0.75rem auto;            /* Separación exterior y centrado */
+  margin: 3.75rem auto;            /* Separación exterior y centrado */
   max-width: 1200px;            /* Ancho máximo en desktop */
 
   display: flex;
@@ -485,7 +485,9 @@ body {
 @media (max-width: 767px) {
   .feature-section {
     flex-direction: column;      /* Apilar los elementos (imagen, texto, imagen) */
-    padding: 1.5rem 1rem;        /* Reducir padding en móvil */
+    padding: 1.5rem 4rem;        /* Reducir padding en móvil */
+    margin: 40px;
+    
   }
 
   /* Ocultar la primera imagen en móvil */
@@ -620,7 +622,7 @@ body {
     display: flex;
     flex-direction: column;    /* Apila video y texto verticalmente */
     gap: 2rem;
-    padding: 1.5rem 1rem;
+    padding: 1.5rem 2rem;
   }
 
   /* En móvil, ocupar todo el ancho del contenedor */
@@ -632,6 +634,7 @@ body {
   /* Listado de beneficios ocupa 100% del ancho */
   .testimonial-text {
     width: 100%;
+    padding-top: 10px;
   }
 
   /* Botón centrado en móvil */
@@ -642,7 +645,6 @@ body {
     text-align: center;
   }
 }
-
 
 /* =====================================================
    SECCIÓN DE REGISTRO (Formulario moderno — Web + Responsive)
@@ -711,12 +713,13 @@ body {
 /* Puedes posicionarla absolutamente o en flujo normal */
 .registro-decor {
   margin-top: 2rem;
+  margin-top: 2px;
 }
 
 .registro-decor img {
   width: 100%;
   max-width: 400px;    /* Ajusta según la imagen decorativa */
-  opacity: 0.1;        /* Si quieres un efecto más sutil */
+  opacity: 100;        /* Si quieres un efecto más sutil */
 }
 
 /* -----------------------------------------------------
@@ -830,7 +833,7 @@ body {
   .registro-content {
     display: flex;
     flex-direction: column;
-    gap: 2rem;           /* Espacio vertical entre info y formulario */
+    gap: 1rem;           /* Espacio vertical entre info y formulario */
   }
 
   .registro-info,
@@ -1105,16 +1108,16 @@ body {
   .how-cards {
     flex-direction: column;    /* Apilar tarjetas una encima de la otra */
     align-items: center;
-    gap: 1.5rem;               /* Menos espacio vertical que en desktop */
+    gap: 2.5rem;               /* Menos espacio vertical que en desktop */
   }
 
   .how-card {
-    max-width: 100%;           /* Que ocupe todo el ancho posible */
+    max-width: 85%;           /* Que ocupe todo el ancho posible */
   }
 
   .how-card-header {
     flex-direction: row;       /* Misma disposición, pero adaptado a menor ancho */
-    padding: 1rem 0.75rem 0.5rem;
+    padding: 1rem 1.75rem 1.5rem;
   }
 
   .how-card-number {
@@ -1132,6 +1135,392 @@ body {
     padding: 0.75rem 0.75rem;
   }
 }
+
+
+/* =====================================================
+   SECCIÓN DE TESTIMONIOS (ALIADOS) — CSS COMPLETO ACTUALIZADO
+   ===================================================== */
+
+/* -----------------------------------------------------
+   1) CONTENEDOR PRINCIPAL DE LA SECCIÓN
+   ----------------------------------------------------- */
+.testimonials-section {
+  background-color: #f9fafb;
+  padding: 4rem 1rem; /* Espacio vertical alrededor de la sección */
+}
+
+/* -----------------------------------------------------
+   2) ENCABEZADO DE LA SECCIÓN (TAG, TÍTULO, SUBTÍTULO)
+   ----------------------------------------------------- */
+.testimonials-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3rem auto; /* 3rem de separación debajo del header */
+}
+
+.testimonials-tag {
+  display: inline-block;
+  font-size: 0.8125rem;     /* 13px */
+  font-weight: 600;
+  color: #6b7280;           /* Gris medio */
+  text-transform: uppercase;
+  background-color: #e5e7eb;/* Gris muy claro */
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  margin-bottom: 0.75rem;
+}
+
+.testimonials-title {
+  font-size: 2rem;          /* 32px */
+  font-weight: 700;
+  color: #1e1e3f;           /* Casi negro */
+  margin-bottom: 0.5rem;
+}
+
+.testimonials-subtitle {
+  font-size: 1rem;          /* 16px */
+  color: #4b5563;           /* Gris oscuro */
+}
+
+/* -----------------------------------------------------
+   3) WRAPPER PARA SCROLL HORIZONTAL
+   ----------------------------------------------------- */
+.testimonials-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;         /* Oculta contenido que sobresale horizontalmente */
+}
+
+/* -----------------------------------------------------
+   4) PISTA (TRACK) QUE CONTIENE TARJETAS
+      - Se duplica en el HTML para lograr scroll continuo
+   ----------------------------------------------------- */
+.testimonials-track {
+  display: flex;
+  gap: 2rem;                /* Espacio horizontal entre tarjetas en desktop */
+  animation: scroll-testimonials 20s linear infinite;
+  padding-bottom: 1rem;     /* Espacio inferior para respirar */
+}
+
+/* -----------------------------------------------------
+   5) CADA TARJETA DE TESTIMONIO
+   ----------------------------------------------------- */
+.testimonial-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+  /* Padding interno: menos vertical para que la tarjeta sea más “plana” */
+  padding: 1rem 1.5rem;
+
+  flex: 0 0 auto;           /* No se estira ni se encoge */
+  width: 350px;             /* Ancho fijo mayor para darle aspecto rectangular */
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;             /* Espacio interno entre avatar, nombre y texto */
+}
+
+/* Avatar circular */
+.testimonial-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.testimonial-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Nombre del autor del testimonio */
+.testimonial-name {
+  font-size: 1rem;          /* 16px */
+  font-weight: 600;
+  color: #1e1e3f;           /* Casi negro */
+}
+
+/* Texto del testimonio: limitado a 3 líneas en desktop */
+.testimonial-text {
+  font-size: 0.9375rem;     /* 15px */
+  line-height: 1.4;         /* Line-height más ajustado */
+  color: #4b5563;           /* Gris oscuro */
+
+  flex-grow: 1;             /* Ocupa espacio vertical disponible */
+
+  display: -webkit-box;             /* Necesario para line-clamp */
+  -webkit-line-clamp: 3;            /* Muestra máximo 3 líneas en desktop */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;          /* Aparece “…” si se excede */
+}
+
+/* -----------------------------------------------------
+   6) ANIMACIÓN CSS PARA SCROLL INFINITO
+   ----------------------------------------------------- */
+@keyframes scroll-testimonials {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Desplaza el ancho de UNA tarjeta + gap (350px + 2rem) */
+    transform: translateX(calc(-1 * (350px + 2rem)));
+  }
+}
+
+/* -----------------------------------------------------
+   7) MEDIA QUERY — ADAPTACIÓN PARA MÓVIL
+   ----------------------------------------------------- */
+@media (max-width: 767px) {
+  /* Espacio vertical más reducido en móvil */
+  .testimonials-section {
+    padding: 3rem 1rem;
+  }
+
+  /* Ajustes en el header */
+  .testimonials-header {
+    margin-bottom: 2rem;
+  }
+  .testimonials-title {
+    font-size: 1.75rem;     /* 28px */
+  }
+  .testimonials-subtitle {
+    font-size: 0.9375rem;   /* 15px */
+  }
+
+  /* Ajuste de gap y velocidad en la pista */
+  .testimonials-track {
+    gap: 1rem;              /* Menos espacio horizontal entre tarjetas */
+    animation-duration: 25s;/* Scroll un poco más lento para un solo elemento en pantalla */
+  }
+
+  /* Tarjetas más estrechas para móvil */
+  .testimonial-card {
+    width: 280px;           /* 280px en lugar de 350px */
+    padding: 0.75rem 1rem;  /* Padding interno reducido */
+  }
+
+  /* Texto del testimonio limitado a 2 líneas en móvil */
+  .testimonial-text {
+    -webkit-line-clamp: 2;  /* Solo 2 líneas en pantallas pequeñas */
+    font-size: 0.875rem;    /* 14px */
+  }
+
+  /* Avatar más pequeño */
+  .testimonial-avatar {
+    width: 40px;
+    height: 40px;
+  }
+  .testimonial-name {
+    font-size: 0.9375rem;   /* 15px */
+  }
+}
+
+/* =====================================================
+   FIN DE LA SECCIÓN DE TESTIMONIOS
+   ===================================================== */
+
+
+/* =====================================================
+   FOOTER ESTILO ADDI (WEB + RESPONSIVE)
+   ===================================================== */
+
+/* -----------------------------------------------------
+   1) CONTENEDOR PRINCIPAL DEL FOOTER
+   ----------------------------------------------------- */
+.addi-footer {
+  background-color: #F9FAFB;     /* Navy oscuro */
+  color: #ffffff;                /* Texto en blanco */
+  padding: 3rem 1rem 1rem 1rem;   /* Espacio: top=3rem, lateral=1rem, bottom=1rem */
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* -----------------------------------------------------
+   2) SECCIÓN SUPERIOR: COLUMNAS (HEADER LÍNEA)
+   ----------------------------------------------------- */
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;               /* Para que se apilen en pantallas pequeñas */
+  gap: 2rem;                      /* Espacio horizontal y vertical entre columnas */
+  max-width: 1200px;
+  margin: 0 auto 2rem auto;      /* Centrar y margin-bottom=2rem */
+}
+
+/* -----------------------------------------------------
+   3) CADA COLUMNA
+   ----------------------------------------------------- */
+.footer-column {
+  flex: 1 1 200px;                /* Mínimo 200px, pero puede crecer */
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;                   /* Espacio interno vertical */
+}
+
+/* -----------------------------------------------------
+   4) ENCABEZADO DE CADA COLUMNA (HEADING)
+   ----------------------------------------------------- */
+.footer-heading {
+  font-size: 1.125rem;            /* 18px */
+  font-weight: 700;
+  color: #fa4515;                 /* Teal / aquamarine */
+  margin-bottom: 0.5rem;
+  text-transform: none;           /* No uppercase, mismo estilo Addi */
+}
+
+/* -----------------------------------------------------
+   5) LISTA DE ENLACES DENTRO DE COLUMNA
+   ----------------------------------------------------- */
+.footer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;                    /* Espacio entre cada link */
+}
+
+.footer-list li a {
+  color: #000000;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.footer-list li a:hover {
+  color: #fa4515;                 /* Al pasar el cursor, se pone teal */
+}
+
+/* -----------------------------------------------------
+   6) COLUMNA “CONTACTO + REDES + LOGO INDUSTRIA”
+   ----------------------------------------------------- */
+.footer-column.footer-contact {
+  flex: 2 1 300px;                /* Esta columna puede ser más ancha */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* “Contáctanos” no es un heading de <h4> aquí, 
+   ya que ya incluimos “Contáctanos” en el heading de la sección. 
+   En tu diseño aparece como parte del footer, 
+   pero como ya no hicimos un <h4> específico, omitimos. */
+
+/* Item de contacto (WhatsApp / Horario) */
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;                   /* Espacio entre icono y texto */
+}
+
+.contact-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.contact-text {
+  font-size: 1rem;               /* 16px */
+  color: #141414;
+}
+
+/* -----------------------------------------------------
+   7) ICONOS DE REDES SOCIALES
+   ----------------------------------------------------- */
+.social-row {
+  display: flex;
+  gap: 1rem;                     /* Espacio entre cada icono social */
+  margin-top: 1rem;              /* Separación de los items de contacto */
+}
+
+.social-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  transition: transform 0.2s ease-in-out;
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
+}
+
+/* -----------------------------------------------------
+   8) LOGO “INDUSTRIA Y COMERCIO”
+   ----------------------------------------------------- */
+.footer-logo-industry {
+  margin-top: 1.5rem;            /* Separación de las redes sociales */
+  display: flex;
+  justify-content: flex-start;   /* En desktop, se alinea a la izquierda */
+}
+
+.footer-logo-industry img {
+  width: 200px;                  /* Ajusta según tamaño de tu asset */
+  height: auto;
+  object-fit: contain;
+}
+
+/* -----------------------------------------------------
+   9) DIVIDER (LÍNEA SEPARADORA HORIZONTAL)
+   ----------------------------------------------------- */
+.footer-divider {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 1rem 0;                /* Margen vertical para separar de contenido abajo */
+}
+
+/* -----------------------------------------------------
+   10) COPYRIGHT (SECCIÓN INFERIOR)
+   ----------------------------------------------------- */
+.footer-bottom {
+  text-align: center;
+  font-size: 0.875rem;           /* 14px */
+  color: #000000;                /* Gris muy claro para diferenciar */
+  padding-bottom: 1rem;
+}
+
+/* =====================================================
+   11) MEDIA QUERY — ADAPTACIÓN PARA PANTALLAS PEQUEÑAS
+   ===================================================== */
+@media (max-width: 767px) {
+  .addi-footer {
+    padding: 2rem 1rem 1rem 1rem;   /* Menos espacio vertical en móvil */
+  }
+
+  .footer-top {
+    flex-direction: column;         /* Apilar columnas verticalmente */
+    gap: 1.5rem;                    /* Espacio vertical entre columnas */
+  }
+
+  .footer-heading {
+    font-size: 1rem;                /* 16px en móvil */
+    text-align: left;               /* Se mantienen alineadas a la izquierda */
+  }
+
+  .footer-list {
+    gap: 0.5rem;
+  }
+
+  .footer-column.footer-contact {
+    align-items: flex-start;        /* No centrar contenido */
+  }
+
+  .social-row {
+    justify-content: flex-start;    /* Alinear iconos a la izquierda */
+  }
+
+  .footer-logo-industry {
+    justify-content: flex-start;    /* Mantener logo a la izquierda */
+  }
+
+  .footer-bottom {
+    font-size: 0.8125rem;           /* 13px en móvil */
+  }
+}
+
 
 
 
@@ -1211,6 +1600,7 @@ body {
   /* Ocultar botón hamburguesa en desktop */
   .nav-toggle {
     display: none;
+    
   }
 
   /* Ocultar ícono de usuario en desktop */
